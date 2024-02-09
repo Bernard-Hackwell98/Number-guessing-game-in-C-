@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main() {
+    srand(static_cast<unsigned int>(time(0)));
+    int randomNumber = rand() % 100 + 1;
+    int guess;
+    int attempts = 0;
+    bool guessedCorrectly = false;
+    cout << "Guess the number between 1 and 100!\n";
+
+    while (attempts <= 5) {
+        cout << "Attempt " << attempts + 1 << ": ";
+        cin >> guess;
+        if (guess == randomNumber) {
+            guessedCorrectly = true;
+            break;
+        } else if (guess < randomNumber) {
+            cout << "Too low!\n";
+        } else {
+            cout << "Too high!\n";
+        }
+        attempts++;
+    }
+
+    if (guessedCorrectly) {
+        cout << "Congratulations! You guessed the number.\n";
+    } else {
+        cout << "Sorry, you ran out of attempts. The number was " << randomNumber << ".\n";
+    }
+
+    return 0;
+}
